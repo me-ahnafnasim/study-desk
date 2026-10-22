@@ -1,0 +1,183 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+/* Frosted-glass cards. Tint, opacity and corner radius come from the settings (style.js). */
+.dw-card {
+  padding: 14px;
+  color: #ffffff;
+  border: 1px solid transparent;
+  font-size: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.dw-border { border-color: rgba(255, 255, 255, 0.24); }
+.dw-shadow { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18); }
+
+/* Clock */
+.dw-clock-time { font-size: 64px; font-weight: 800; }
+.dw-clock-date { font-size: 17px; color: rgba(255, 255, 255, 0.75); }
+
+/* Quote */
+.dw-quote { padding: 16px 20px; }
+.dw-quote-text { font-size: 15px; font-weight: 600; font-style: italic; }
+.dw-quote-author { font-size: 12px; color: rgba(255, 255, 255, 0.7); padding-top: 6px; }
+
+/* Calendar */
+.dw-cal-month { color: #ff6961; font-weight: bold; font-size: 11px; padding-bottom: 4px; }
+.dw-cal-cell { width: 19px; height: 17px; text-align: center; font-size: 10.5px; font-weight: bold; }
+.dw-cal-head { color: rgba(255, 255, 255, 0.6); }
+.dw-cal-today { background-color: rgba(255, 69, 58, 0.9); border-radius: 9px; }
+
+/* Weather */
+.dw-weather-city { font-weight: bold; font-size: 14px; }
+.dw-weather-temp { font-size: 40px; font-weight: 300; }
+.dw-weather-icon { icon-size: 18px; color: #ffd54a; padding-bottom: 2px; }
+.dw-weather-cond, .dw-weather-range { font-weight: bold; font-size: 11.5px; }
+
+/* Now playing */
+.dw-media-art {
+  width: 62px; height: 62px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  background-size: cover;
+}
+.dw-media-state { icon-size: 16px; }
+.dw-media-title { font-weight: bold; font-size: 13px; }
+.dw-media-artist { color: rgba(255, 255, 255, 0.75); font-size: 11.5px; }
+
+/* Notes */
+.dw-notes { padding: 0; }
+.dw-notes-header {
+  background-color: rgba(255, 204, 0, 0.75);
+  padding: 9px 14px;
+  spacing: 6px;
+}
+.dw-notes-heading { font-weight: bold; font-size: 12px; }
+.dw-notes-body { padding: 10px 14px 12px; spacing: 3px; }
+.dw-notes-title { font-weight: bold; font-size: 12px; }
+.dw-notes-text, .dw-notes-date { color: rgba(255, 255, 255, 0.65); font-size: 11px; }
+
+/* Screen time */
+.dw-st-header { spacing: 8px; padding-bottom: 8px; }
+.dw-st-emoji { font-size: 20px; }
+.dw-st-total { font-size: 20px; font-weight: bold; }
+
+/* System info */
+.dw-sysinfo { spacing: 8px; }
+.dw-sys-header { font-weight: bold; font-size: 13px; padding-bottom: 2px; }
+.dw-sys-row { spacing: 10px; }
+.dw-sys-name { width: 56px; color: rgba(255, 255, 255, 0.75); }
+.dw-sys-value { width: 96px; text-align: right; font-weight: bold; }
+.dw-sys-track { height: 8px; border-radius: 4px; background-color: rgba(255, 255, 255, 0.15); }
+.dw-sys-fill { border-radius: 4px; }
+.dw-sys-cpu { background-color: #4fd1b5; }
+.dw-sys-memory { background-color: #64b5ff; }
+.dw-sys-disk { background-color: #ffb547; }
+.dw-sys-footer { color: rgba(255, 255, 255, 0.65); font-size: 11px; padding-top: 2px; }
+
+/* Per-app usage */
+.dw-apps { spacing: 6px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.15); }
+.dw-apps-row { spacing: 8px; }
+.dw-apps-header { color: rgba(255, 255, 255, 0.6); font-size: 11px; font-weight: bold; }
+.dw-apps-cpu { width: 52px; text-align: right; }
+.dw-apps-mem { width: 72px; text-align: right; }
+
+/* Clickable controls */
+.dw-btn { border-radius: 10px; padding: 4px 8px; color: #ffffff; transition-duration: 150ms; }
+.dw-btn:hover { background-color: rgba(255, 255, 255, 0.14); }
+.dw-btn:active { background-color: rgba(255, 255, 255, 0.24); }
+.dw-card-button { padding: 0; border-radius: 12px; }
+.dw-card-button:hover { background-color: rgba(255, 255, 255, 0.05); }
+.dw-round { border-radius: 999px; padding: 6px; background-color: rgba(255, 255, 255, 0.12); }
+
+/* Exam countdown */
+.dw-countdown-head { font-size: 10.5px; font-weight: bold; color: rgba(255, 255, 255, 0.6); }
+.dw-countdown-days { font-size: 44px; font-weight: 800; }
+.dw-countdown-unit { font-size: 12px; color: rgba(255, 255, 255, 0.75); }
+.dw-countdown-name { font-size: 13px; font-weight: bold; }
+.dw-countdown-date { font-size: 11px; color: rgba(255, 255, 255, 0.6); }
+
+/* Focus timer */
+.dw-focus { spacing: 4px; }
+.dw-focus-phase { font-size: 11px; font-weight: bold; color: rgba(255, 255, 255, 0.75); }
+.dw-focus-time { font-size: 19px; font-weight: 800; }
+.dw-focus-controls { spacing: 8px; }
+
+/* Study streak */
+.dw-streak { spacing: 16px; }
+.dw-streak-left { width: 72px; }
+.dw-streak-fire { font-size: 22px; }
+.dw-streak-count { font-size: 34px; font-weight: 800; }
+.dw-streak-unit { font-size: 11px; color: rgba(255, 255, 255, 0.65); }
+.dw-streak-right { spacing: 6px; }
+.dw-streak-title { font-size: 11px; font-weight: bold; color: rgba(255, 255, 255, 0.6); }
+.dw-streak-goal { font-weight: bold; }
+.dw-streak-fill { background-color: #ff9f6b; }
+.dw-streak-week { padding-top: 4px; }
+.dw-streak-bar { background-color: #ff9f6b; border-radius: 4px; }
+.dw-streak-day { font-size: 10px; color: rgba(255, 255, 255, 0.55); }
+
+/* Word of the day */
+.dw-word-head { font-size: 10.5px; font-weight: bold; color: rgba(255, 255, 255, 0.6); }
+.dw-word-hint { font-size: 10px; color: rgba(255, 255, 255, 0.4); }
+.dw-word-title { spacing: 8px; padding: 4px 0 2px; }
+.dw-word-word { font-size: 24px; font-weight: 800; }
+.dw-word-pos { font-size: 12px; font-style: italic; color: rgba(255, 255, 255, 0.6); padding-bottom: 4px; }
+.dw-word-meaning { font-size: 13px; font-weight: 600; }
+.dw-word-example { font-size: 12px; font-style: italic; color: rgba(255, 255, 255, 0.65); padding-top: 4px; }
+
+/* Tasks */
+.dw-todo-head { padding-bottom: 6px; }
+.dw-todo-title { font-size: 14px; font-weight: bold; }
+.dw-todo-left { font-size: 11px; color: rgba(255, 255, 255, 0.6); }
+.dw-todo-list { spacing: 2px; }
+.dw-todo-row { spacing: 6px; }
+.dw-todo-check { padding: 3px; }
+.dw-todo-text { font-size: 12.5px; }
+.dw-todo-done { color: rgba(255, 255, 255, 0.45); }
+.dw-todo-due { font-size: 11px; color: rgba(255, 255, 255, 0.6); }
+.dw-todo-soon { color: #ffd54a; font-weight: bold; }
+.dw-todo-overdue { color: #ff6961; font-weight: bold; }
+.dw-todo-empty, .dw-todo-more { font-size: 11.5px; color: rgba(255, 255, 255, 0.55); padding-top: 4px; }
+
+/* Class timetable */
+.dw-timetable { spacing: 3px; }
+.dw-tt-head { font-size: 10.5px; font-weight: bold; color: rgba(255, 255, 255, 0.6); }
+.dw-tt-now { font-size: 18px; font-weight: 800; }
+.dw-tt-info { font-size: 11.5px; color: rgba(255, 255, 255, 0.7); }
+.dw-tt-fill { background-color: #64b5ff; }
+.dw-tt-next { font-size: 12px; padding-top: 6px; color: rgba(255, 255, 255, 0.85); }
+
+/* Saved videos & links */
+.dw-links-head { padding-bottom: 6px; }
+.dw-links-title { font-size: 14px; font-weight: bold; }
+.dw-links-count { font-size: 11px; color: rgba(255, 255, 255, 0.6); }
+.dw-links-list { spacing: 2px; }
+.dw-links-button { padding: 6px 8px; }
+.dw-links-row { spacing: 10px; }
+.dw-links-icon { padding: 7px; border-radius: 8px; background-color: rgba(255, 255, 255, 0.15); }
+.dw-links-video { background-color: rgba(255, 0, 0, 0.75); }
+.dw-links-headline { font-size: 12.5px; font-weight: bold; }
+.dw-links-url { font-size: 10.5px; color: rgba(255, 255, 255, 0.55); }
+.dw-links-more { font-size: 11.5px; font-weight: bold; color: #9ecbff; margin-top: 4px; }
+.dw-links-empty { font-size: 11.5px; color: rgba(255, 255, 255, 0.55); }
+
+/* Sleep */
+.dw-sleep { spacing: 8px; }
+.dw-sleep-headrow { spacing: 10px; }
+.dw-sleep-emoji { font-size: 24px; }
+.dw-sleep-total { font-size: 22px; font-weight: 800; }
+.dw-sleep-range { font-size: 11.5px; color: rgba(255, 255, 255, 0.7); }
+.dw-sleep-goal { font-size: 11.5px; font-weight: bold; color: #b9a8ff; }
+.dw-sleep-bar { background-color: #8e7dff; border-radius: 4px; }
+.dw-sleep-avg { font-size: 11px; color: rgba(255, 255, 255, 0.6); }
+
+/* Edit mode (Super+Alt+W) */
+.dw-edit-backdrop { background-color: rgba(0, 0, 0, 0.35); }
+.dw-editing { box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.55); }
+.dw-dragging { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55); }
+.dw-edit-hint {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background-color: rgba(28, 28, 30, 0.9);
+}

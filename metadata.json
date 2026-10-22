@@ -1,0 +1,11 @@
+{
+  "uuid": "study-desk@me-ahnafnasim.github.io",
+  "name": "Study Desk",
+  "description": "A study dashboard on your desktop, in frosted-glass widgets. Everyday: clock, motivational quotes, now playing, calendar, weather, notes, screen time, and system info with per-app usage. For students: exam countdown, Pomodoro focus timer, study streak and daily goal, word of the day, tasks, class timetable, saved videos and links, sleep estimate and break reminders.\n\nWidgets sit behind your windows and you can click them: tick tasks, start the timer, open links. Press Super+Alt+W to drag them, Super+Alt+F to start or pause the focus timer. Show or hide widgets, arrange columns and change the look in the settings.\n\nNetwork: the weather widget sends your city name to Open-Meteo (open-meteo.com). Hide it to turn this off. Saved links open in your browser only when you click them.",
+  "shell-version": [
+    "49"
+  ],
+  "settings-schema": "org.gnome.shell.extensions.study-desk",
+  "url": "https://github.com/me-ahnafnasim/study-desk",
+  "version-name": "1.0"
+}

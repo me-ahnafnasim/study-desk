@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.study-desk" path="/org/gnome/shell/extensions/study-desk/">
+    <key name="edit-widgets" type="as">
+      <default><![CDATA[['<Super><Alt>w']]]></default>
+      <summary>Toggle widget edit mode</summary>
+    </key>
+    <key name="positions" type="s">
+      <default>'{}'</default>
+      <summary>Widget positions as JSON, relative to the primary monitor</summary>
+    </key>
+    <key name="visible-widgets" type="as">
+      <default>['quote', 'clock', 'media', 'calendar', 'weather', 'notes', 'screentime', 'sysinfo', 'countdown', 'focus', 'streak', 'word', 'todo', 'timetable', 'links', 'sleep']</default>
+      <summary>Widgets to show</summary>
+    </key>
+    <key name="tint-color" type="s">
+      <default>'#ffffff'</default>
+      <summary>Glass tint color</summary>
+    </key>
+    <key name="glass-opacity" type="d">
+      <range min="0" max="0.9"/>
+      <default>0.12</default>
+      <summary>How opaque the glass is</summary>
+    </key>
+    <key name="colored-widgets" type="b">
+      <default>true</default>
+      <summary>Tint weather, now playing and notes with their own colors</summary>
+    </key>
+    <key name="show-border" type="b">
+      <default>true</default>
+      <summary>Draw a light border around each widget</summary>
+    </key>
+    <key name="show-shadow" type="b">
+      <default>true</default>
+      <summary>Draw a soft shadow under each widget</summary>
+    </key>
+    <key name="corner-radius" type="i">
+      <range min="0" max="40"/>
+      <default>22</default>
+      <summary>Corner roundness in pixels</summary>
+    </key>
+    <key name="widget-scale" type="d">
+      <range min="0.6" max="1.6"/>
+      <default>1.0</default>
+      <summary>Widget size</summary>
+    </key>
+    <key name="app-count" type="i">
+      <range min="0" max="10"/>
+      <default>5</default>
+      <summary>Apps listed in the system widget (0 hides the list)</summary>
+    </key>
+    <key name="weather-location" type="s">
+      <default>''</default>
+      <summary>City for the weather widget (empty uses the system timezone)</summary>
+    </key>
+    <key name="temperature-unit" type="s">
+      <choices>
+        <choice value="celsius"/>
+        <choice value="fahrenheit"/>
+      </choices>
+      <default>'celsius'</default>
+      <summary>Temperature unit</summary>
+    </key>
+    <key name="note-text" type="s">
+      <default>''</default>
+      <summary>The note shown in the notes widget; the first line is its title</summary>
+    </key>
+    <key name="note-updated" type="x">
+      <default>0</default>
+      <summary>When the note was last edited (Unix time)</summary>
+    </key>
+    <key name="note-bullets" type="b">
+      <default>true</default>
+      <summary>Show each line after the title as a bullet point</summary>
+    </key>
+    <key name="notes-file" type="s">
+      <default>''</default>
+      <summary>Optional text file to show instead of the note</summary>
+    </key>
+    <key name="quote-interval" type="i">
+      <range min="5" max="3600"/>
+      <default>40</default>
+      <summary>Seconds between quotes</summary>
+    </key>
+    <key name="quote-source" type="s">
+      <choices>
+        <choice value="both"/>
+        <choice value="builtin"/>
+        <choice value="custom"/>
+      </choices>
+      <default>'both'</default>
+      <summary>Which quotes to show</summary>
+    </key>
+    <key name="custom-quotes" type="as">
+      <default>[]</default>
+      <summary>Your own quotes, as "text — author"</summary>
+    </key>
+    <key name="stack-position" type="s">
+      <choices>
+        <choice value="top-right"/>
+        <choice value="top-left"/>
+        <choice value="bottom-right"/>
+        <choice value="bottom-left"/>
+        <choice value="center"/>
+      </choices>
+      <default>'top-right'</default>
+      <summary>Where the widget stack sits on the primary monitor</summary>
+    </key>
+    <key name="stack-margin" type="i">
+      <range min="0" max="600"/>
+      <default>40</default>
+      <summary>Distance from the screen edge in pixels</summary>
+    </key>
+    <key name="widget-order" type="as">
+      <default>['quote', 'clock', 'media', 'calendar', 'weather', 'notes', 'screentime', 'sysinfo', 'countdown', 'focus', 'streak', 'word', 'todo', 'timetable', 'links', 'sleep']</default>
+      <summary>Order of widgets in the stack</summary>
+    </key>
+    <key name="widget-columns" type="s">
+      <default>'{}'</default>
+      <summary>Column for each widget as JSON (1 = at the screen edge); unset widgets use their default column</summary>
+    </key>
+    <key name="focus-toggle" type="as">
+      <default><![CDATA[['<Super><Alt>f']]]></default>
+      <summary>Start or pause the focus timer</summary>
+    </key>
+    <key name="focus-minutes" type="i">
+      <range min="1" max="180"/>
+      <default>25</default>
+      <summary>Focus session length in minutes</summary>
+    </key>
+    <key name="break-minutes" type="i">
+      <range min="1" max="60"/>
+      <default>5</default>
+      <summary>Short break length in minutes</summary>
+    </key>
+    <key name="long-break-minutes" type="i">
+      <range min="1" max="120"/>
+      <default>15</default>
+      <summary>Long break length in minutes, taken after every 4 focus sessions</summary>
+    </key>
+    <key name="focus-state" type="s">
+      <default>'{}'</default>
+      <summary>Running timer state (internal), so the timer survives the screen locking</summary>
+    </key>
+    <key name="study-log" type="s">
+      <default>'{}'</default>
+      <summary>Minutes of completed focus per day as JSON (internal)</summary>
+    </key>
+    <key name="daily-goal-minutes" type="i">
+      <range min="10" max="960"/>
+      <default>120</default>
+      <summary>Daily study goal in minutes</summary>
+    </key>
+    <key name="exams" type="s">
+      <default>'[]'</default>
+      <summary>Exams as JSON [{"name", "date": "YYYY-MM-DD"}]</summary>
+    </key>
+    <key name="todos" type="s">
+      <default>'[]'</default>
+      <summary>Tasks as JSON [{"text", "due": "YYYY-MM-DD" or "", "done"}]</summary>
+    </key>
+    <key name="timetable" type="s">
+      <default>'[]'</default>
+      <summary>Classes as JSON [{"day": 0-6 (Sunday = 0), "start": "HH:MM", "end": "HH:MM", "title", "place"}]</summary>
+    </key>
+    <key name="links" type="s">
+      <default>'[]'</default>
+      <summary>Saved links as JSON [{"title", "url"}]</summary>
+    </key>
+    <key name="sleep-goal-hours" type="d">
+      <range min="4" max="12"/>
+      <default>8</default>
+      <summary>Nightly sleep goal in hours</summary>
+    </key>
+    <key name="sleep-overrides" type="s">
+      <default>'{}'</default>
+      <summary>Corrected nights as JSON {"YYYY-MM-DD": ["HH:MM bedtime", "HH:MM wake"]}</summary>
+    </key>
+    <key name="break-reminders" type="b">
+      <default>true</default>
+      <summary>Remind me to take a break after long stretches at the screen</summary>
+    </key>
+    <key name="break-every-minutes" type="i">
+      <range min="15" max="240"/>
+      <default>50</default>
+      <summary>Minutes of continuous screen time before a break reminder</summary>
+    </key>
+  </schema>
+</schemalist>
