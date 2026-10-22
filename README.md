@@ -7,6 +7,18 @@ behind your windows, and you can click them directly.
 
 Requires **GNOME Shell 49**.
 
+![Study Desk on the GNOME desktop](screenshots/desktop.png)
+
+## Screenshots
+
+| Study widgets | Everyday widgets |
+|---|---|
+| ![Saved videos, sleep, exam countdown, focus timer, study streak, word of the day, tasks and class timetable](screenshots/study-widgets.png) | ![System info with per-app usage, quote, clock, now playing, calendar, weather, notes and screen time](screenshots/everyday-widgets.png) |
+
+| Settings | Edit mode (<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>W</kbd>) |
+|---|---|
+| ![The settings window: Widgets, Study and Content pages](screenshots/settings.png) | ![Edit mode: drag widgets anywhere on the desktop](screenshots/edit-mode.png) |
+
 ## Widgets
 
 ### For studying
