@@ -21,12 +21,14 @@ const CHECKS = {
             ? [`${m[1].padStart(2, '0')}:${m[2]}`, null] : [null, 'must be a 24-hour time like 09:30'];
     },
     url: v => {
+        if (!/^[a-z][a-z0-9+.-]*:/i.test(v))
+            v = `https://${v}`; // "youtube.com/watch?v=…" is fine too
         try {
             const uri = GLib.Uri.parse(v, GLib.UriFlags.NONE);
             if (['http', 'https'].includes(uri.get_scheme()))
                 return [v, null];
         } catch {}
-        return [null, 'must be a web link starting with https://'];
+        return [null, 'must be a web link, like youtube.com/watch?v=…'];
     },
 };
 
@@ -41,7 +43,7 @@ function readList(settings, key) {
 
 // An "add" form plus a list with delete buttons for a JSON-array setting.
 // fields: [{name, title, type: text|date|time|url|day, optional}]; describe(item) -> [title, subtitle].
-export function listEditor(window, settings, key, {title, description, fields, describe, order, toggle, extra}) {
+export function listEditor(window, settings, key, {title, description, fields, describe, order, toggle, extra, addLabel = 'Add'}) {
     const form = new Adw.PreferencesGroup({title, description});
     const inputs = fields.map(field => {
         if (field.type === 'day') {
@@ -51,14 +53,15 @@ export function listEditor(window, settings, key, {title, description, fields, d
             return {field, read: () => row.selected, clear: () => {}};
         }
         const row = new Adw.EntryRow({title: `${field.title}${field.optional ? ' (optional)' : ''}`});
+        row.connect('changed', () => row.remove_css_class('error'));
+        row.connect('entry-activated', () => submit()); // Enter saves too
         form.add(row);
-        return {field, read: () => row.text.trim(), clear: () => (row.text = '')};
+        return {field, row, read: () => row.text.trim(), clear: () => (row.text = '')};
     });
 
-    const add = new Gtk.Button({label: 'Add', valign: Gtk.Align.CENTER, css_classes: ['suggested-action']});
-    add.connect('clicked', () => {
+    const submit = () => {
         const item = {};
-        for (const {field, read} of inputs) {
+        for (const {field, read, row} of inputs) {
             const raw = read();
             if (field.type === 'day') {
                 item[field.name] = raw;
@@ -70,6 +73,8 @@ export function listEditor(window, settings, key, {title, description, fields, d
             }
             const [value, error] = CHECKS[field.type ?? 'text'](raw);
             if (error) {
+                row?.add_css_class('error');
+                row?.grab_focus();
                 toast(window, `${field.title} ${error}`);
                 return;
             }
@@ -77,7 +82,10 @@ export function listEditor(window, settings, key, {title, description, fields, d
         }
         settings.set_string(key, JSON.stringify([...readList(settings, key), item]));
         inputs.forEach(i => i.clear());
-    });
+        toast(window, 'Saved');
+    };
+    const add = new Gtk.Button({label: addLabel, valign: Gtk.Align.CENTER, css_classes: ['suggested-action']});
+    add.connect('clicked', submit);
     const addRow = new Adw.ActionRow();
     addRow.add_suffix(add);
     extra?.forEach(button => addRow.add_prefix(button));

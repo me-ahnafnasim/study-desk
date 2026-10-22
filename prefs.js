@@ -30,8 +30,8 @@ function contentPage(window, settings) {
         title: 'Saved videos and links',
         description: 'Each shows its headline with the link underneath; click one on the desktop to open it. ' +
             'Four show at a time, with “View more” for the rest.',
-        fields: [{name: 'title', title: 'Headline'}, {name: 'url', title: 'Link (https://…)', type: 'url'}],
-        describe: l => [l.title, l.url],
+        fields: [{name: 'title', title: 'Headline'}, {name: 'url', title: 'Link (paste the YouTube or web address)', type: 'url'}],
+        describe: l => [l.title, l.url], addLabel: 'Save video',
     }).forEach(g => page.add(g));
 
     const note = new Adw.PreferencesGroup({title: 'Note',

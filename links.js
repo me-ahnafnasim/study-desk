@@ -49,7 +49,8 @@ class LinksWidget extends St.BoxLayout {
 
     _open(url) {
         try {
-            Gio.AppInfo.launch_default_for_uri(url, global.create_app_launch_context(0, -1));
+            // The click's timestamp lets the browser come to the front instead of opening behind other windows.
+            Gio.AppInfo.launch_default_for_uri(url, global.create_app_launch_context(global.get_current_time(), -1));
         } catch (e) {
             warn('links', e.message);
         }
