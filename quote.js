@@ -70,7 +70,16 @@ class QuoteWidget extends St.BoxLayout {
         const custom = this._settings.get_strv('custom-quotes').filter(l => l.trim()).map(parseCustom);
         if (source === 'custom' && custom.length)
             return custom;
-        return source === 'builtin' ? QUOTES : [...custom, ...QUOTES];
+        const quotes = source === 'builtin' ? QUOTES : [...custom, ...QUOTES];
+        // Drops custom entries that repeat a built-in one.
+        const seen = new Set();
+        return quotes.filter(([text, author]) => {
+            const key = `${text} — ${author}`;
+            if (seen.has(key))
+                return false;
+            seen.add(key);
+            return true;
+        });
     }
 
     // Deals every quote once in random order before repeating, never showing the same one twice in a row.

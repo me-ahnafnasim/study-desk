@@ -50,7 +50,7 @@ export default class StudyDeskExtension extends Extension {
         Main.wm.addKeybinding('focus-toggle', this._settings, Meta.KeyBindingFlags.NONE,
             Shell.ActionMode.NORMAL, () => this._byKey('focus').toggle());
         this._breaks = new BreakReminder(this._settings, () => this._byKey('focus').running);
-        Main.layoutManager.connectObject('monitors-changed', () => this._place(), this);
+        Main.layoutManager.connectObject('monitors-changed', () => this._applySettings(), this);
         this._settings.connectObject('changed', (_s, key) => {
             if (STACK_KEYS.includes(key)) {
                 this._settings.reset('positions');
@@ -105,13 +105,11 @@ export default class StudyDeskExtension extends Extension {
             this._byKey('sysinfo').setAppCount(this._settings.get_int('app-count'));
 
         const visible = this._settings.get_strv('visible-widgets');
-        const scale = this._settings.get_double('widget-scale');
         for (const w of this._widgets) {
             const show = visible.includes(w._dwKey);
             if (show && !w.visible && this._sources)
                 w.update(); // refresh a widget that was hidden while its data went stale
             w.visible = show;
-            w.set_scale(scale, scale);
             applyStyle(w, this._settings);
         }
         this._place();
@@ -123,6 +121,16 @@ export default class StudyDeskExtension extends Extension {
         } catch {
             return {};
         }
+    }
+
+    _fits(stack, scale, area) {
+        for (const [w, [x, y]] of stack) {
+            if (x < area.x || y < area.y
+                || x + w.width * scale > area.x + area.width
+                || y + w.height * scale > area.y + area.height)
+                return false;
+        }
+        return true;
     }
 
     // Visible widgets in the user's order; widgets missing from the setting (e.g. new ones) go last.
@@ -137,15 +145,25 @@ export default class StudyDeskExtension extends Extension {
         if (!monitor || !this._settings)
             return;
         const saved = this._savedPositions();
-        const scale = this._settings.get_double('widget-scale');
+        const area = Main.layoutManager.getWorkAreaForMonitor(Main.layoutManager.primaryIndex);
         const columns = parseJson(this._settings, 'widget-columns', {});
-        const stack = stackLayout(this._ordered(), {
+        const opts = {
             columnOf: w => Number(columns[w._dwKey]) || defaultColumn(w._dwKey),
             anchor: this._settings.get_string('stack-position'),
             margin: this._settings.get_int('stack-margin'),
-            scale,
-            area: Main.layoutManager.getWorkAreaForMonitor(Main.layoutManager.primaryIndex),
-        });
+            area,
+        };
+
+        // Starting from the user's widget-scale, shrink a notch at a time until every card
+        // lands inside the screen; 0.6 is the smallest scale the settings allow.
+        let scale = this._settings.get_double('widget-scale');
+        let stack = stackLayout(this._ordered(), {...opts, scale});
+        while (scale > 0.6 && !this._fits(stack, scale, area)) {
+            scale = Math.max(0.6, scale - 0.02);
+            stack = stackLayout(this._ordered(), {...opts, scale});
+        }
+        for (const w of this._widgets)
+            w.set_scale(scale, scale);
         for (const [w, [x, y]] of stack) {
             const [px, py] = saved[w._dwKey] ? [monitor.x + saved[w._dwKey][0], monitor.y + saved[w._dwKey][1]] : [x, y];
             w.set_position(

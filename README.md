@@ -41,7 +41,7 @@ step away after a long unbroken stretch at the screen (they stay quiet while the
 
 | Widget | What it shows |
 |---|---|
-| **Motivational Quote** | A new quote every 40 seconds from 50 built-in quotes and/or your own |
+| **Motivational Quote** | A new quote every 40 seconds from 100 built-in Qur’anic verses and/or your own |
 | **Clock** | Time (follows your 12/24-hour setting) and date |
 | **Now Playing** | Track, artist and album art from any MPRIS player (Spotify, browsers, Rhythmbox…) |
 | **Calendar** | This month, starting on your locale's first weekday |
